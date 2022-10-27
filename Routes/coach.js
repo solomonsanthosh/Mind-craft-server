@@ -1,6 +1,6 @@
 
 const express = require("express");
-const { getCoach, sendMail } = require("../controllers/Coach.controller");
+const { getCoach, sendMail } = require("../controllers/coach.controller");
 
 const Routes = express.Router();
 
