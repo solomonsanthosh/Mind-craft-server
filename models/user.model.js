@@ -18,6 +18,9 @@ userSchema = new mongoose.Schema({
     severity:{
         type:String,
         lowercase:true
+    },
+    image:{
+        type:String,
     }
    })
    

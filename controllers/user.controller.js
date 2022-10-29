@@ -33,6 +33,19 @@ exports.updateUser = async (req,res)=>{
     }
 
 }
+exports.updateUserImage = async (req,res) => {
+    const {email,image} = req.body;
+    try {
+        const user = await User.findOneAndUpdate({email:email},{image:image},{new:true})
+        console.log(user);
+        res.json(user)
+       
+    } catch (err){
+        console.log('====================================');
+        console.log(err);
+        console.log('====================================');
+    }
+}
 exports.getSingleUser = async (req,res) => {
     try {
         const {email} = req.params
@@ -63,6 +76,7 @@ exports.getUser = async (req,res)=>{
 exports.getProfile = async (req,res) => {
     try{
         const {id} = req.params
+        const user = await User.findOne({_id:id})
         const post = await Post.find({owner:id})
         const comment = await Comment.find({owner:id})
        console.log('====================================');
@@ -70,7 +84,8 @@ exports.getProfile = async (req,res) => {
        console.log('====================================');
         res.json({
             post:post,
-            comment:comment
+            comment:comment,
+            user:user
         })
     } catch (err){
         console.log('====================================');

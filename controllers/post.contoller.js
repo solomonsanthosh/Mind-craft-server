@@ -65,7 +65,7 @@ exports.createComment = async (req, res) => {
 exports.getComment = async (req, res) => {
   try {
     const { postid } = req.params;
-    const comment = await Comment.find({ post: postid },{},{sort: {updatedAt: -1}}).populate({path:'owner',select:'name'}).exec()
+    const comment = await Comment.find({ post: postid },{},{sort: {updatedAt: -1}}).populate({path:'owner'}).exec()
     res.json(comment);
   } catch (err) {
     console.log(err);
