@@ -10,6 +10,16 @@ exports.getCoach = async (req, res) => {
     console.log(err);
   }
 };
+exports.createCoach = async (req,res) =>{
+  try{
+    console.log('inside');
+    const {name,email,experience,about,fee} = req.body
+    const coach = new Coach({name:name,email:email,experience:experience,about:about,fee:fee}).save()
+    res.json(coach)
+  } catch (err) {
+    console.log(err);
+  }
+}
 exports.sendMail = async (req,res) => {
   try {
     const {name,topic,email,description} = req.body

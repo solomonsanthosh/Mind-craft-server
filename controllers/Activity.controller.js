@@ -10,3 +10,24 @@ exports.getActivity = async (req, res) => {
     console.log(err);
   }
 };
+exports.addActivity = async (req,res) => {
+  try { 
+    const {title,topic,duration} = req.body
+    const activity = new Activity({title:title,topic:topic,duration:duration}).save()
+    res.json(activity)
+  } catch (err) {
+    console.log(err);
+  } 
+}
+
+exports.getActivities = async (req, res) => {
+  try {
+    
+    
+    const activity = await Activity.find()
+    res.json(activity)
+  } catch (err) {
+    console.log(err);
+  }
+};
+
